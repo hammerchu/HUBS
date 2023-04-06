@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>export</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <button #buttonLoadImage type="button" (click)="handleButtonClick()">
+    Load image
+</button>
+
+<pintura-editor
+    #editor
+    [options]="editorDefaults"
+    src="assets/images/512_512.jpg"
+></pintura-editor>
+</ion-content>

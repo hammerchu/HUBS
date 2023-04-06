@@ -1,0 +1,402 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>stage</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+
+  <div class="top">
+    <div #____IMG_TOP____ *ngIf="showPanel['image']">
+      <ion-grid>
+        <ion-row>
+          <ion-col class="top-left">
+          </ion-col>
+          <ion-col class="top-center">
+            <ion-row>
+              <ion-item lines="none">
+                <ion-button id="click_projectSetting" class="dropDownMenu"  color="light" shape="round">Project setting</ion-button>
+                <ion-popover trigger="click_projectSetting" triggerAction="click">
+                  <ng-template>
+                    <ion-content>
+                      <ion-list>
+
+                        <ion-item>
+                          <ion-label>Product type</ion-label>
+                          <ion-select interface="popover" [(ngModel)]="projectType" [value]="projectType">
+                            <ion-select-option value="fashion">Fashion</ion-select-option>
+                            <ion-select-option value="food">Packaged Food</ion-select-option>
+                            <ion-select-option value="cosmetic">Cosmetic</ion-select-option>
+                        </ion-select>
+                        </ion-item>
+
+                        <ion-item>
+                          <ion-label>Style</ion-label>
+                          <ion-select interface="popover" [(ngModel)]="projectStyle">
+                            <ion-select-option value="photo">Photo</ion-select-option>
+                            <ion-select-option value="manga">Manga</ion-select-option>
+                            <ion-select-option value="painting">Painting</ion-select-option>
+                        </ion-select>
+                        </ion-item>
+
+                        <ion-item>
+                          <ion-label>Dimension</ion-label>
+                          <ion-select interface="popover" [(ngModel)]="projectDimension">
+                            <ion-select-option value="16to9portrait">16:9 Portrait</ion-select-option>
+                            <ion-select-option value="16to9Landscape">16:9 Landscape</ion-select-option>
+                            <ion-select-option value="square">Square</ion-select-option>
+                            <ion-select-option value="4to3portrait">4:3 Portrait</ion-select-option>
+                            <ion-select-option value="4to3Landscape">4:3 Landscape</ion-select-option>
+                        </ion-select>
+                        </ion-item>
+                      </ion-list>
+                    </ion-content>
+                  </ng-template>
+                </ion-popover>
+
+                <ion-button shape="round" color="light" class="dropDownMenu" >Auto face fix</ion-button>
+                <ion-button shape="round" color="light" class="dropDownMenu" >Lighting</ion-button>
+                <!-- <ion-button shape="round" color="light" class="dropDownMenu" (click)="switchDisplayMode()">Preview</ion-button> -->
+                <ion-button shape="round" id="click-image-config" color="light" class="dropDownMenu" >Prompt setting</ion-button>
+                <ion-popover trigger="click-image-config" triggerAction="click">
+                  <ng-template>
+                    <ion-content>
+                      <ion-list>
+                        <ion-item>
+                          <ion-label>Cfg</ion-label>
+                          <ion-range aria-label="Temperature">
+                            <ion-icon slot="start" name="snow-outline"></ion-icon>
+                            <ion-icon slot="end" name="sunny-outline"></ion-icon>
+                          </ion-range>
+                        </ion-item>
+                        <ion-item>
+                          <ion-label>Cfg</ion-label>
+                          <!-- <ion-note>The flexibilty of the prompt</ion-note> -->
+                          <ion-range aria-label="Range with ticks" [ticks]="true" [snaps]="true" [min]="0" [max]="10"
+                            [value]="5">
+                          </ion-range>
+                          <ion-label>0.5</ion-label>
+                        </ion-item>
+                      </ion-list>
+                    </ion-content>
+                  </ng-template>
+                </ion-popover>
+
+              </ion-item>
+            </ion-row>
+            <ion-row #_____PROMPT_____>
+              <ion-col class="promptBar">
+                <ion-input class="searchBar" placeholder="Search by tag or screen" debounce="300" id="searchBar"
+                  placeholder="e.g. A red bottle hold by a beautiful girl in a cozy cafe">
+                  <ion-chip (click)="showLoginModal()" class="idea">Ideas</ion-chip>
+                  <ion-chip (click)="generate()" class="generate" slot="end"></ion-chip>
+                  <ion-chip style="--background:transparent;" slot="end">
+                    <ion-icon name="repeat-outline"></ion-icon>
+                  </ion-chip>
+                  <ion-progress-bar color="medium"
+                    style="position:absolute; left:8px; bottom:-5px; width: 97%; height:2px; --background:pink;"
+                    type="indeterminate"></ion-progress-bar>
+                </ion-input>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+          <ion-col class="top-right">
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <div #____GUIDE_TOP____ *ngIf="showPanel['guide']">
+      <ion-grid>
+        <ion-row>
+          <ion-col class="top-left">
+          </ion-col>
+          <ion-col class="top-center">
+            <ion-row>
+              <ion-item lines="none">
+                <ion-chip color="dark">Package Food</ion-chip>
+                <ion-chip color="dark">Realistic</ion-chip>
+                <ion-chip color="dark">Landscape 16:9</ion-chip>
+                <ion-chip color="dark">Config</ion-chip>
+
+              </ion-item>
+            </ion-row>
+            <ion-row>
+              <ion-item lines="none">
+                <ion-chip color="dark" (click)="addGuideLayer()">Add Guide</ion-chip>
+                <!-- <ion-chip color="dark" (click)="updateGuideBkgdImg()">Update Background</ion-chip> -->
+                <!-- <ion-chip slot="end" color="dark">Upload Guide</ion-chip> -->
+
+              </ion-item>
+            </ion-row>
+          </ion-col>
+          <ion-col class="top-right">
+
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <div #____MASK_TOP____ *ngIf="showPanel['mask']">
+      <ion-grid>
+        <ion-row>
+          <ion-col class="top-left">
+          </ion-col>
+          <ion-col class="top-center">
+            <ion-row>
+              <ion-item lines="none">
+                <ion-chip color="dark">Package Food</ion-chip>
+                <ion-chip color="dark"> Realistic</ion-chip>
+                <ion-chip color="dark">Landscape 16:9</ion-chip>
+                <ion-chip color="dark">Config</ion-chip>
+              </ion-item>
+            </ion-row>
+            <ion-row>
+              <ion-item lines="none">
+                <ion-chip color="dark">Add Mask</ion-chip>
+                <ion-chip color="dark">Edit Mask</ion-chip>
+                <ion-chip slot="end" color="dark">Upload Mask</ion-chip>
+
+              </ion-item>
+            </ion-row>
+
+          </ion-col>
+          <ion-col class="top-right">
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+
+  </div>
+  <div>
+
+    <!-- <div #____IMAGE_____ *ngIf="showPanel['image']" > -->
+    <div>
+      <ion-grid>
+        <ion-row>
+          <ion-col class="middle-left">
+            <div (click)="switchPanel('image')" class="image-preview">
+              <div>Image
+              </div>
+              <img [src]="imageResult" alt="imageResult" *ngIf="imageResult"  />
+            </div>
+            <div (click)="switchPanel('guide')" class="guide-preview">
+              <div>Guide
+              </div>
+              <img [src]="guideResult" alt="guideResult" *ngIf="guideResult"  />
+            </div>
+            <div (click)="switchPanel('mask')" class="mask-preview">
+              <div>Mask
+              </div>
+              <img [src]="maskResult" alt="maskResult" *ngIf="maskResult"  />
+            </div>
+          </ion-col>
+
+          <ion-col  #____IMAGE_____ class="middle-center"
+          [style.z-index]="showPanel['image']? '10' : '1'" >
+
+            <ion-card class="ion-card-canvas">
+              <div class="pillButton">
+                <ion-chip color="medium" style="text-transform:capitalize ;" (click)="switchDisplayMode()">{{allDisplayMode[currentDisplayModeIndex]}}</ion-chip>
+              </div>
+              <div style="height: 100%; background-color: pink;">
+                <!--
+                  [willRenderToolbar]="willRenderToolbar"
+                 -->
+                <pintura-editor  #imgEditor [src]="srcImage"
+                [options]="options"
+                [imageBackgroundColor]="[1, 1, 1]"
+                [enableCanvasAlpha]="false"
+                [handleEvent]="handleEvent"
+                [willProcessImage]="willProcessImage"
+                (process)="handleEditorProcess($event)"
+                (update)="handleEditorUpdate($event)"
+                [locale]="locale"
+                [utils]="[
+                    'sticker',
+                ]"
+                >
+              </pintura-editor>
+              </div>
+
+              <!-- <ngx-file-drop dropZoneLabel="Drop files here" (onFileDrop)="dropped($event)"
+                dropZoneClassName="dropzoneStyle" contentClassName="contentzoneStyle" (onFileOver)="fileOver($event)"
+                (onFileLeave)="fileLeave($event)">
+                <ng-template ngx-file-drop-content-tmp let-openFileSelector="openFileSelector">
+                </ng-template>
+              </ngx-file-drop> -->
+            </ion-card>
+          </ion-col>
+
+          <ion-col  #____GUIDE_____ class="middle-center"
+          [style.z-index]="showPanel['guide']? '10' : '1'" >
+          <!--
+            [style.visibility]="showPanel['guide'] ? 'visiable' : 'hidden'"
+          > -->
+            <ion-card class="ion-card-canvas" *ngFor="let layer of guideLayerObject;  let i = index;"  [style.visibility]="showPanel['guide'] && layer.visiable? 'visible' : 'hidden'" [style.z-index]="layer.visiable? '10' : '1'" >
+              <div class="pillButton">
+                <ion-chip color="medium" style="text-transform:capitalize ;" (click)="switchDisplayMode()">{{allDisplayMode[currentDisplayModeIndex]}}</ion-chip>
+              </div>
+              <div style="height: 100%; background-color: pink;"  >
+                <div style="position:absolute; top:330px; left:350px; z-index:11; pointer-events: none; ">
+                  This is a Test
+                </div>
+                <!--
+                  [willRenderShapePresetToolbar]="willRenderShapePresetToolbar"
+                  [willRenderToolbar]="willRenderToolbar"
+                -->
+                <pintura-editor id="guideEditor{{i}}" #guideEditor
+                [src]="srcGuide"
+                [options]="optionsGuide"
+                [imageBackgroundColor]="[1, 1, 1, 0]"
+                [enableCanvasAlpha]="false"
+                [handleEvent]="handleEvent"
+                [markupEditorToolbar]="markupEditorToolbar"
+                [willProcessImage]="willProcessImage"
+                (process)="handleEditorProcess($event)"
+                [locale]="localeGuide"
+                [imageBackgroundImage]="imageBackgroundImage"
+                [utils]="guideUtils"
+                  >
+                  </pintura-editor>
+
+              </div>
+
+            </ion-card>
+          </ion-col>
+
+          <ion-col #____MASK____ class="middle-center"  [style.visibility]="showPanel['mask'] ? 'visiable' : 'hidden'">
+            <ion-card class="ion-card-canvas">
+              Mask
+              <div class="pillButton">
+                <ion-chip>Preview</ion-chip>
+              </div>
+              <ion-card-title>
+              </ion-card-title>
+            </ion-card>
+          </ion-col>
+
+
+
+          <ion-col class="middle-right">
+
+            <div #_____IMG_RIGHT_____ class="all-thrumbnails"
+            [style.display]="showPanel['image'] ? 'block' : 'none'"
+            [style.z-index]="showPanel['image'] ? '10' : '1'">
+
+              <div class="large-thrumbnails" (click)="showPreviewerModal();">
+                <ion-button shape="round" size="small" fill="regular" color="medium"><ion-icon
+                    name="search-outline"></ion-icon></ion-button>
+                <img src="assets/images/2160900275002-16-2.jpg">
+              </div>
+              <div class="large-thrumbnails" (click)="showPreviewerModal()">
+
+                <ion-button shape="round" size="small" fill="regular" color="medium"><ion-icon
+                    name="search-outline"></ion-icon></ion-button>
+                <img src="assets/images/hermes-birkin-bag-history-1900x1024.jpg">
+              </div>
+              <div class="large-thrumbnails" (click)="showPreviewerModal()">
+
+                <ion-button shape="round" size="small" fill="regular" color="medium"><ion-icon
+                    name="search-outline"></ion-icon></ion-button>
+                <img src="assets/images/199_Hermes_Birkin_30_Togo_Gold_9_D2.jpg">
+              </div>
+              <div class="large-thrumbnails">
+              </div>
+            </div>
+
+            <div #_____GUIDE_RIGHT_____ class="all-thrumbnails"
+            [style.display]="showPanel['guide'] ? 'block' : 'none'"
+            [style.z-index]="showPanel['guide'] ? '10' : '1'">
+
+              <div id="guideEditorImage" (click)="selectGuideLayer(i)" class="guide-container" *ngFor="let layer of guideLayerObject;  let i = index;">
+                <ion-button class="add-mask" shape="round" size="small">
+                  M
+                </ion-button>
+                <div class="guide-thrumbnails">
+                  <ion-button class="remove-guide" shape="round" size="small">
+                    <ion-icon name="trash-outline"></ion-icon>
+                  </ion-button>
+                  <!-- <img [src]="guideResult" alt="guideResult" *ngIf="guideResult"  /> -->
+                  <img [src]="layer.preview" alt="layer.preview" *ngIf="layer.preview"  />
+                </div>
+              </div>
+
+            </div>
+
+
+
+
+            <div #_____MASK_RIGHT_____ class="all-thrumbnails"
+            [style.display]="showPanel['mask'] ? 'block' : 'none'"
+            [style.z-index]="showPanel['mask'] ? '10' : '1'">
+
+              <div class="large-thrumbnails">
+                <ion-button class="layerButton" shape="round" size="small">
+                  <ion-icon name="add-circle-outline"></ion-icon>
+                </ion-button>
+              </div>
+              <div class="large-thrumbnails">
+                <ion-button class="layerButton" shape="round" size="small">
+                  <ion-icon name="remove-circle-outline"></ion-icon>
+                </ion-button>
+              </div>
+              <div class="large-thrumbnails">
+                <ion-button class="layerButton" shape="round" size="small">
+                  <ion-icon name="add-circle-outline"></ion-icon>
+                </ion-button>
+              </div>
+
+              <div #___stack_layers____ class="large-thrumbnails">
+                <div class="large-thrumbnails">
+                  <ion-button class="layerButton" shape="round" size="small"><ion-icon
+                      name="add-outline"></ion-icon></ion-button>
+                </div>
+              </div>
+            </div>
+
+
+
+
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+
+
+
+
+  </div>
+
+
+  <div #____IMAGE_PREVIEWER____>
+    <ion-modal class="previewer-modal" [isOpen]="isShowPreviewerModal" [initialBreakpoint]="1"
+      [breakpoints]="[0, 0.75, 1]" (ionModalWillDismiss)="dismissPreviewerModal()">
+      <ng-template>
+        <ion-content>
+          <ion-card>
+            <!-- <ion-card-title>
+              Previewer
+            </ion-card-title> -->
+            <ion-card-subtitle>
+              <ion-item lines="none">
+                <!-- <ion-chip >Realistic</ion-chip>
+                <ion-chip >packaged food</ion-chip> -->
+                Water bottle hold by a beautiful girl in a cozy kitchen, sunset lighting, 8K, masterpiece
+                <ion-chip slot="end">Copy</ion-chip>
+              </ion-item>
+            </ion-card-subtitle>
+            <div>
+              <img src="assets/images/2160900275002-16-2.jpg">
+            </div>
+          </ion-card>
+
+        </ion-content>
+      </ng-template>
+    </ion-modal>
+  </div>
+
+
+</ion-content>
