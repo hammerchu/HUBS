@@ -1,0 +1,16 @@
+<!-- <h1 style="border: 1px solid yellowgreen;" >Daily Client SDK for JavaScript Angular demo</h1> -->
+<!-- <join-form style="border: 1px solid pink;"
+  *ngIf="!dailyRoomUrl"
+  (setUserName_)="setUserName($event)"
+  (setUrl_)="setUrl($event)"></join-form> -->
+  <!-- *ngIf="dailyRoomUrl" -->
+<call style="border: 0px solid orangered; background-color: blueviolet;"
+  [userName]="userName"
+  [dailyRoomUrl]="dailyRoomUrl"
+  (callEnded)="callEnded()">
+</call>
+
+
+<app-chat *ngIf="dailyRoomUrl" [userName]="userName"></app-chat>
+
+
