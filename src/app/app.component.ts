@@ -113,7 +113,8 @@ export class AppComponent {
   }
 
   dev_set_video_res(size:String){
-    this.dataService.sendMessage(`test567-${size}`, 'hubs')
+    // this.dataService.sendMessage(`test567-${size}`, 'hubs')
+    this.dataService.set_video_res(size, 'test-bot')
   }
 
 

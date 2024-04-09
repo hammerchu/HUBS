@@ -1,5 +1,6 @@
 import { Component, Input, HostListener } from "@angular/core";
 import { FormBuilder } from "@angular/forms";
+import {DataService} from '../service/data.service'
 import DailyIframe, {
   DailyCall,
   DailyEventObjectAppMessage,
@@ -39,7 +40,8 @@ export class ChatComponent {
 
   }
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder,
+    public dataService: DataService) {}
 
   chatForm = this.formBuilder.group({
     message: "",
@@ -68,28 +70,22 @@ export class ChatComponent {
    **/
   handleNewMessage = (e: DailyEventObjectAppMessage<any> | undefined): void => {
     if (!e) return;
-    console.log(e);
-    let msg = JSON.parse(e.data).message
-    if (msg.startsWith('obb-sys@')){
-      this.handleObbSysMessage(msg)
+    let msg = e.data
+    console.log(' Incoming msg : ', msg );
+    if (msg['type'] === 'request'){
+      if (msg['name'] === "supervise_request"){
+        this.dataService.show_approval_request(msg['from'])
+      }
     }
-    else if (msg.startsWith('obb-cmd@')){
-      this.handleObbCmdMessage(msg)
-    }
-    else{
-      console.log(msg);
+    else if (msg['type'] === 'help'){
+      this.dataService.show_help_msg()
     }
 
-    if (e.data.event === "request-chat-history") return;
-    // this.messages.push({ message: msg, name: e.data.name });
+
+
 
   };
-  handleObbSysMessage(message:string){
-    console.log('This is an OBB system message: ', message)
-  }
-  handleObbCmdMessage(message:string){
-    console.log('This is an OBB command message: ', message)
-  }
+
 
   // Submit chat form if user presses Enter key while the textarea has focus
   onKeyDown(event: any): void {
@@ -113,4 +109,12 @@ export class ChatComponent {
     // clear the form input for your next message
     this.chatForm.reset();
   }
+
+
+
+
+
+
+
+
 }

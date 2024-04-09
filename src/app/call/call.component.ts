@@ -236,7 +236,7 @@ export class CallComponent {
 
   get_connection_speed(){
     this.dataService.callObject.getNetworkStats().then((data) => {
-      console.log(' getNetworkStats : ', data, 'latest', data.stats.latest)
+      // console.log(' getNetworkStats : ', data, 'latest', data.stats.latest)
       this.dataService.connection_speed = <number>data.stats.latest.networkRoundTripTime;
 
       this.dataService.connection_quality = data.quality?data.quality:0

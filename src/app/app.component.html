@@ -108,18 +108,20 @@
   </div> -->
   <div ____CONTROL____  style="position:absolute; left: 33%; top:0px; width: 33%; height:450px; background-color: rgba(30, 30, 30, 1);">
 
-      <ion-button fill="outline" shape="default" color="medium" style="margin:10px; --border-radius: 10px; text-transform: capitalize;">Network Quality: {{dataService.connection_quality}}</ion-button>
-      <ion-button fill="outline" shape="default" color="medium" style="margin:10px; --border-radius: 10px; text-transform: capitalize;">Bandwidth {{dataService.bandwidth}}</ion-button>
-      <ion-button fill="outline" shape="default" color="medium" style="margin:10px; --border-radius: 10px; text-transform: capitalize;">Latency {{dataService.latency}}</ion-button>
-      <ion-button fill="outline" shape="default" [color]="isFlashing? 'success':'medium'" style="margin:10px; --border-radius: 10px; text-transform: capitalize;" (click)="toggleAnimation()">Dev::flash border::{{isFlashing}}</ion-button>
-      <ion-button fill="outline" shape="default" [color]="isFlashing? 'success':'medium'" style="margin:10px; --border-radius: 10px; text-transform: capitalize;" (click)="dev_set_video_res('size@l')">Dev::Hi </ion-button>
-      <ion-button fill="outline" shape="default" [color]="isFlashing? 'success':'medium'" style="margin:10px; --border-radius: 10px; text-transform: capitalize;" (click)="dev_set_video_res('size@m')">Dev::Md</ion-button>
-      <ion-button fill="outline" shape="default" [color]="isFlashing? 'success':'medium'" style="margin:10px; --border-radius: 10px; text-transform: capitalize;" (click)="dev_set_video_res('size@s')">Dev::Lo</ion-button>
+      <ion-button fill="outline" shape="default" color="medium" style="margin:10px; --border-radius: 10px; text-transform: capitalize;">Quality: {{dataService.connection_quality}}</ion-button>
+      <ion-button fill="outline" shape="default" color="medium" style="margin:10px; --border-radius: 10px; text-transform: capitalize;">Bandwidth {{dataService.bandwidth | number:'1.0-1' }}</ion-button>
+      <ion-button fill="outline" shape="default" color="medium" style="margin:10px; --border-radius: 10px; text-transform: capitalize;">Latency {{dataService.latency}}</ion-button><br>
+      <!-- <ion-button fill="outline" shape="default" [color]="isFlashing? 'success':'medium'" style="margin:10px; --border-radius: 10px; text-transform: capitalize;" (click)="toggleAnimation()">Dev::flash border::{{isFlashing}}</ion-button> -->
+      <ion-button fill="outline" shape="default" [color]="isFlashing? 'success':'medium'" style="margin:10px; --border-radius: 10px; text-transform: capitalize;" (click)="dev_set_video_res('l')">Hi </ion-button>
+      <ion-button fill="outline" shape="default" [color]="isFlashing? 'success':'medium'" style="margin:10px; --border-radius: 10px; text-transform: capitalize;" (click)="dev_set_video_res('m')">Md</ion-button>
+      <ion-button fill="outline" shape="default" [color]="isFlashing? 'success':'medium'" style="margin:10px; --border-radius: 10px; text-transform: capitalize;" (click)="dev_set_video_res('s')">Lo</ion-button>
 
       <div style="margin:10px;">
-        <ion-item lines="none" style="font-size:larger; margin: 50px 10px; border-radius: 16px; --background: rgb(90, 50, 50);"><ion-label>Action 1</ion-label><ion-button fill="outline" color="dark" size="large" style="--border-radius: 16px;">OK</ion-button></ion-item>
-        <ion-item lines="none" style="font-size:larger; margin: 50px 10px; border-radius: 16px; --background: rgb(50, 90, 50);"><ion-label>Action 2</ion-label><ion-button fill="outline" color="dark" size="large" style="--border-radius: 16px;">OK</ion-button></ion-item>
-        <ion-item lines="none" style="font-size:larger; margin: 50px 10px; border-radius: 16px; --background: rgb(50, 50, 90);"><ion-label>Action 3</ion-label><ion-button fill="outline" color="dark" size="large" style="--border-radius: 16px;">OK</ion-button></ion-item>
+        <div *ngIf="dataService.show_supervise_request">
+          <ion-label>Supervise Request from {{dataService.request_from_bot_id}}</ion-label>
+          <ion-item lines="none" style="font-size:larger; margin: 50px 10px; border-radius: 16px; --background: rgb(50, 90, 50);"><ion-label>Grant Approval</ion-label><ion-button fill="outline" color="dark" size="large" style="--border-radius: 16px; text-transform: capitalize;" (click)="dataService.grant_supervise_approval('show_supervise_request')">Confirm</ion-button></ion-item>
+          <ion-item lines="none" style="font-size:larger; margin: 50px 10px; border-radius: 16px; --background: rgb(150, 50, 50);"><ion-label>Taken Over</ion-label><ion-button fill="outline" color="dark" size="large" style="--border-radius: 16px; text-transform: capitalize;">Confirm</ion-button></ion-item>
+        </div>
 
       </div>
   </div>
@@ -134,7 +136,7 @@ justify-content: space-between;">
   <ion-button shape="round" size="large" color="light">K134</ion-button>
   <ion-button shape="round" size="large" color="light">K152</ion-button> -->
 </div>
-<div  ____VIEWS____ style="position:relative; width: 100%; height:100px; background-color: rgba(50, 50, 50, 1);">
+<!-- <div  ____VIEWS____ style="position:relative; width: 100%; height:100px; background-color: rgba(50, 50, 50, 1);">
   <div style="position:absolute; left: 0px; top:0px; width: 33%; height:100px; background-color:rgba(10, 10, 10, 1); color:aliceblue">
     <div class="function_button_L">Map View</div>
   </div>
@@ -144,7 +146,7 @@ justify-content: space-between;">
   <div style="position:absolute; left: 66%; top:0px; width: 33%; height:100px; background-color:rgba(50, 50, 50, 1); color:aliceblue">
     <div class="function_button_L">Bot View</div>
   </div>
-</div>
+</div> -->
 
 <!-- <main> -->
   <!-- <router-outlet></router-outlet> -->
