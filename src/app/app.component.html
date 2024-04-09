@@ -1,0 +1,163 @@
+
+
+<header>
+  <div class="position:relative;">
+    <!-- <span style="position: absolute; top:20px; left:20px; border-radius:10px; border: 2px solid black; font-size: medium; padding:10px;">Bot view </span> -->
+  </div>
+  <div class="container">
+    <div class="row">
+      <!-- <a>
+        <img src="../assets/obb-logo.svg" alt="Obb logo" target="_blank"/>
+      </a> -->
+      <div class="divider"></div>
+      <a href="https://github.com/daily-demos/daily-angular" target="_blank">
+      </a>
+
+      <!-- <a>
+        <img height="48" src="../assets/battery_75.svg" alt="battery" target="_blank"/>
+        <span class="header-title">75% </span>
+      </a> -->
+
+      <!-- <a>
+        <div class="task-info">Delivering to ICC, 1 austin Rd W for PO27645 - {{dataService.hasBotParticipant}} </div>
+      </a> -->
+
+
+      <!-- <div class="task-info">Status:&nbsp;<div style="color: green;">Normal</div></div> -->
+
+      <!-- <a>
+        <img height="15" src="../assets/noun-fast.svg" alt="speed" target="_blank"/>
+        <span class="header-title">5</span>
+      </a> -->
+    </div>
+
+    <!-- <div class="row">
+      <a class="round" href="https://docs.daily.co/reference/daily-js"
+        >Hand Off
+      </a>
+      <a href="https://github.com/daily-demos/daily-angular" target="_blank">
+        <img height="36" alt="Github" src="../assets/github.svg"/>
+      </a>
+    </div> -->
+  </div>
+</header>
+<div  ____ACTIONS____ style="position:relative; width: 100%; height:50px; background-color:  rgba(10, 10, 10, 1); color:aliceblue;;">
+  <div style="position:absolute; left: 0px; width:150px; height: 50px; background-color: rgba(10, 10, 10, 1); color:aliceblue;">
+    <div class="function_button_M"> 1 Hi-Res</div>
+  </div>
+  <div style="position:absolute; left: 150px; width:150px; height: 50px; background-color: rgba(30, 30, 30, 1);color:aliceblue;">
+    <div class="function_button_M"> 2 Lights On</div>
+  </div>
+  <div style="position:absolute; left: 300px; width:150px; height: 50px; background-color: rgba(50, 50, 50, 1);color:aliceblue;">
+    <div class="function_button_M"> 3 Faster</div>
+  </div>
+
+  <div style="position:absolute; left: 450px; width:150px; height: 50px; background-color: rgba(10, 10, 10, 1); color:aliceblue;">
+    <div class="function_button_M"> 4 Slower</div>
+  </div>
+  <div style="position:absolute; left: 600px; width:150px; height: 50px; background-color:  rgba(30, 30, 30, 1); color:aliceblue;"></div>
+  <div style="position:absolute; left: 750px; width:150px; height: 50px; background-color:  rgba(50, 50, 50, 1); color:aliceblue;"></div>
+  <div style="position:absolute; left: 900px; width:150px; height: 50px; background-color:  rgba(10, 10, 10, 1); color:aliceblue;"></div>
+  <div style="position:absolute; left: 1050px; width:150px; height: 50px; background-color: rgba(30, 30, 30, 1); color:aliceblue;"></div>
+  <div style="position:absolute; left: 1200px; width:150px; height: 50px; background-color:  rgba(50, 50, 50, 1); color:aliceblue;"></div>
+  <div style="position:absolute; left: 1350px; width:150px; height: 50px; background-color:  rgba(10, 10, 10, 1); color:aliceblue;">
+  </div>
+  <div style="position:absolute; left: 1350px; width:150px; height: 50px; background-color:  rgba(30, 30, 30, 1); color:aliceblue;">
+  </div>
+  <div style="position:absolute; left: 1500px; width:150px; height: 50px; background-color:  rgba(50, 50, 50, 1); color:aliceblue;">
+  </div>
+  <div style="position:absolute; left: 1650px; width:150px; height: 50px; background-color:  rgba(10, 10, 10, 1); color:aliceblue;">
+  </div>
+  <div style="position:absolute; left: 1800px; width:150px; height: 50px; background-color:  rgba(30, 30, 30, 1); color:aliceblue;">
+  </div>
+  <div style="position:absolute; left: 1950px; width:150px; height: 50px; background-color:  rgba(50, 50, 50, 1); color:aliceblue;">
+    <div class="function_button_M"> = Control</div>
+  </div>
+
+</div>
+
+
+<div  ____VIDEOS____ [ngClass]="isFlashing? 'border_animation_slow':''" style="width: 100%; height:480px; z-index:99;">
+
+    <app-daily-container></app-daily-container>
+
+</div>
+
+<div  ____INFOS____ style="position:relative; width: 100%; height:450px; background-color: rgba(50, 50, 50, 1);">
+  <!-- <div ____MAP____ style="position:absolute; left: 0px; top:0px; width: 33%; height:450px; background-color: rgba(10, 10, 10, 1);">
+
+    <google-map height="450px"
+    width="100%"
+    [zoom]="zoom"
+    [center]="center"
+    [options]="gMapOptions">
+    <div __MAP_INFO__ style="border-radius: 10px; position:absolute; left: 10px; bottom: 10px; width: 100px; height:50px; background-color: rgba(10, 10, 10, 0.5);"></div>
+
+    <map-marker
+    #markerElem
+    *ngFor="let marker of markers"
+    [position]="marker.position"
+    [label]="marker.label"
+    [title]="marker.title"
+    [options]="marker.options"
+    (mapClick)="addMarker()"
+    >
+    </map-marker>
+
+  </google-map>
+  </div> -->
+  <div ____CONTROL____  style="position:absolute; left: 33%; top:0px; width: 33%; height:450px; background-color: rgba(30, 30, 30, 1);">
+
+      <ion-button fill="outline" shape="default" color="medium" style="margin:10px; --border-radius: 10px; text-transform: capitalize;">Network Quality: {{dataService.connection_quality}}</ion-button>
+      <ion-button fill="outline" shape="default" color="medium" style="margin:10px; --border-radius: 10px; text-transform: capitalize;">Bandwidth {{dataService.bandwidth}}</ion-button>
+      <ion-button fill="outline" shape="default" color="medium" style="margin:10px; --border-radius: 10px; text-transform: capitalize;">Latency {{dataService.latency}}</ion-button>
+      <ion-button fill="outline" shape="default" [color]="isFlashing? 'success':'medium'" style="margin:10px; --border-radius: 10px; text-transform: capitalize;" (click)="toggleAnimation()">Dev::flash border::{{isFlashing}}</ion-button>
+      <ion-button fill="outline" shape="default" [color]="isFlashing? 'success':'medium'" style="margin:10px; --border-radius: 10px; text-transform: capitalize;" (click)="dev_set_video_res('size@l')">Dev::Hi </ion-button>
+      <ion-button fill="outline" shape="default" [color]="isFlashing? 'success':'medium'" style="margin:10px; --border-radius: 10px; text-transform: capitalize;" (click)="dev_set_video_res('size@m')">Dev::Md</ion-button>
+      <ion-button fill="outline" shape="default" [color]="isFlashing? 'success':'medium'" style="margin:10px; --border-radius: 10px; text-transform: capitalize;" (click)="dev_set_video_res('size@s')">Dev::Lo</ion-button>
+
+      <div style="margin:10px;">
+        <ion-item lines="none" style="font-size:larger; margin: 50px 10px; border-radius: 16px; --background: rgb(90, 50, 50);"><ion-label>Action 1</ion-label><ion-button fill="outline" color="dark" size="large" style="--border-radius: 16px;">OK</ion-button></ion-item>
+        <ion-item lines="none" style="font-size:larger; margin: 50px 10px; border-radius: 16px; --background: rgb(50, 90, 50);"><ion-label>Action 2</ion-label><ion-button fill="outline" color="dark" size="large" style="--border-radius: 16px;">OK</ion-button></ion-item>
+        <ion-item lines="none" style="font-size:larger; margin: 50px 10px; border-radius: 16px; --background: rgb(50, 50, 90);"><ion-label>Action 3</ion-label><ion-button fill="outline" color="dark" size="large" style="--border-radius: 16px;">OK</ion-button></ion-item>
+
+      </div>
+  </div>
+  <div ____LIDAR____ style="position:absolute; left: 66%; top:0px; width: 33%; height:450px; --background-color: rgba(50, 50, 50, 1);"></div>
+</div>
+
+<div  ____UNITS____ style="width: 100%; height:100px; background-color: black;
+display: flex;
+align-items: center;
+justify-content: space-between;">
+  <!-- <ion-button shape="round" size="large" color="light">K126</ion-button>
+  <ion-button shape="round" size="large" color="light">K134</ion-button>
+  <ion-button shape="round" size="large" color="light">K152</ion-button> -->
+</div>
+<div  ____VIEWS____ style="position:relative; width: 100%; height:100px; background-color: rgba(50, 50, 50, 1);">
+  <div style="position:absolute; left: 0px; top:0px; width: 33%; height:100px; background-color:rgba(10, 10, 10, 1); color:aliceblue">
+    <div class="function_button_L">Map View</div>
+  </div>
+  <div style="position:absolute; left: 33%; top:0px; width: 33%; height:100px; background-color :rgba(30, 30, 30, 1); color:aliceblue">
+    <div class="function_button_L">Order View</div>
+  </div>
+  <div style="position:absolute; left: 66%; top:0px; width: 33%; height:100px; background-color:rgba(50, 50, 50, 1); color:aliceblue">
+    <div class="function_button_L">Bot View</div>
+  </div>
+</div>
+
+<!-- <main> -->
+  <!-- <router-outlet></router-outlet> -->
+<!-- </main> -->
+
+<!-- <main class="content"> -->
+  <!-- Components are rendered based on the route -->
+  <!-- <router-outlet></router-outlet> -->
+  <!-- <app-video-tile></app-video-tile> -->
+  <!-- <app-daily-container></app-daily-container> -->
+
+  <!-- Footer -->
+  <!-- <footer>
+    <p>Brought to you by Daily :)</p>
+  </footer> -->
+<!-- </main> -->
